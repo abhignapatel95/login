@@ -1,0 +1,28 @@
+﻿@model Login.Models.log
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<form method="post">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Emailid, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Emailid, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Emailid, "", new { @class = "text-danger" })
+            @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-primary" />
+</form>
+

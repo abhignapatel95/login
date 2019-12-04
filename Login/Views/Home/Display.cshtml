@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Login.Models.User>
+@{
+    ViewBag.Title = "Display";
+}
+
+<h2>Display</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @Html.ActionLink("LogOut", "LogOut")
+</p>
+
+
+
+
+
+@using (Html.BeginForm("Display", "Home", FormMethod.Post))
+{
+
+
+
+    <table class="table table-striped table-bordered">
+
+        <tr>
+            <th>Firstname</th>
+            <th>LastName</th>
+            <th>Address</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Firstname</td>
+                <td>@item.LastName</td>
+                <td>@item.Address</td>
+                <td>@item.Mobileno</td>
+                <td>@item.Emailid</td>
+                <td>@Html.ActionLink("Edit", "Update", "Home", new { personid = item.ID }, new { @class = "btn btn-primary" })</td>
+            </tr>
+        }
+
+    </table>
+}
